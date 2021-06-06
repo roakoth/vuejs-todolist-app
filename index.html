@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS Todo list App</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div id="app">
+        <div class="container">
+            <h1> Todo List</h1>
+          
+            <div class="item" v-if="isEditing">
+               
+               <input type="text" v-model="todo">
+               <button class="btn"  type="text" value="update" @click="updateTodo"> Update</button>
+
+            </div>
+
+             <div class="item" v-else>
+                <input type="text" v-model="todo">
+               <button class="btn" type="text" value="add" @click="storeTodo"> Add</button>
+             </div>
+            
+
+            <ol>
+                <li v-for="(todo, index) in todos">
+                 {{ todo }}   
+
+                 <button class="btn" @click="editTodo(index, todo)">Edit</button>
+                 <button class="btn" @click="deleteTodo(index)">Delete</button>
+                </li>
+            </ol>
+        </div>
+
+    </div>
+ 
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="todo.js"></script>
+</body>
+
+</html>
